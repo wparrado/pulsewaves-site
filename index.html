@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PulseWaves crea una experiencia musical generativa en tiempo real, privada y diseñada para acompañarte.">
+  <meta name="theme-color" content="#0b1020">
+  <title>PulseWaves — Música generativa en tiempo real</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <header class="hero">
+    <nav class="topbar" aria-label="Principal">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark">
+          <img src="./assets/pulsewaves-logo.png" alt="PulseWaves" />
+        </span>
+        <span>
+          <strong>PulseWaves</strong>
+          <small>Música generativa</small>
+        </span>
+      </a>
+      <div class="topbar-links">
+        <a href="#funciones">Funciones</a>
+        <a href="#privacidad">Privacidad</a>
+        <a href="#planes">Planes</a>
+      </div>
+    </nav>
+
+    <section class="hero-grid" id="inicio">
+      <div class="hero-copy">
+        <div class="eyebrow">Experiencia musical personal</div>
+        <h1>Tu música, viva y en movimiento.</h1>
+        <p class="lead">
+          PulseWaves crea una banda sonora que evoluciona contigo, con una experiencia fluida,
+          privada y pensada para sentirse cercana desde el primer momento.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#funciones">Ver funciones</a>
+          <a class="btn secondary" href="#privacidad">Conocer privacidad</a>
+        </div>
+
+        <ul class="hero-points" aria-label="Ventajas principales">
+          <li>Música generativa en tiempo real</li>
+          <li>Exportación local</li>
+          <li>Experiencia privada</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-label="Vista de producto">
+        <div class="device-card">
+          <div class="device-header">
+            <span class="status-dot"></span>
+            <span>Sesión activa</span>
+          </div>
+          <div class="waveform" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="metrics">
+            <article>
+              <strong>Tiempo real</strong>
+              <span>respuesta viva</span>
+            </article>
+            <article>
+              <strong>Local</strong>
+              <span>sin depender de terceros</span>
+            </article>
+            <article>
+              <strong>Flexible</strong>
+              <span>planes para cada etapa</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section" id="funciones">
+      <div class="section-heading">
+        <span>Funciones clave</span>
+        <h2>Una experiencia musical creada para fluir contigo.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Música que evoluciona</h3>
+          <p>La sesión cambia en tiempo real para mantener una sensación fresca, dinámica y nunca repetitiva.</p>
+        </article>
+        <article class="card">
+          <h3>Exportación local</h3>
+          <p>Guarda tus sesiones en tu dispositivo para volver a escucharlas cuando quieras.</p>
+        </article>
+        <article class="card">
+          <h3>Experiencia estable</h3>
+          <p>Diseñada para acompañarte con una reproducción continua y una interfaz clara.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div class="panel" id="privacidad">
+        <div class="section-heading">
+          <span>Privacidad</span>
+          <h2>Una propuesta pensada para sentirse cercana y discreta.</h2>
+        </div>
+        <p>
+          PulseWaves prioriza una experiencia personal: tu contenido permanece contigo y la app
+          evita añadir fricción innecesaria a tu sesión.
+        </p>
+      </div>
+
+      <div class="panel" id="planes">
+        <div class="section-heading">
+          <span>Planes</span>
+          <h2>Solo Free y Pro, con precio mensual claro.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan-card">
+            <div class="plan-head">
+              <h3>Free</h3>
+              <p class="plan-price">Gratis</p>
+            </div>
+            <ul class="plan-features">
+              <li>Acceso a Focus y Relax</li>
+              <li>Reproducción continua</li>
+              <li>Hasta 6 skips por hora</li>
+            </ul>
+          </article>
+          <article class="plan-card featured">
+            <div class="plan-head">
+              <h3>Pro</h3>
+              <p class="plan-price">$1.99 / mes</p>
+            </div>
+            <ul class="plan-features">
+              <li>Incluye todo lo de Free</li>
+              <li>Acceso a Sleep y Power Nap</li>
+              <li>Exportación WAV local</li>
+              <li>Skips ilimitados</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="feature-grid">
+        <article class="card">
+          <h3>Siempre disponible</h3>
+          <p>Una experiencia pensada para integrarse de forma natural en tu rutina diaria.</p>
+        </article>
+        <article class="card">
+          <h3>Diseño envolvente</h3>
+          <p>Una presencia visual elegante, suave y enfocada en la música.</p>
+        </article>
+        <article class="card">
+          <h3>Versión inicial enfocada</h3>
+          <p>La primera entrega prioriza la experiencia principal y una base sólida para crecer.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> PulseWaves. Música generativa para tu día.</p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
