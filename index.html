@@ -1,174 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+  Landing de lanzamiento para wparrado.github.io/pulsewaves-site
+  - Autocontenida (un archivo). Sustituye los [PLACEHOLDER]:
+    · Capturas: pon 3-4 PNG/JPG (las mismas de Play) en /assets y ajusta los <img>.
+    · Email capture: cambia el action del <form> por tu Formspree/Mailchimp/Beehiiv.
+    · Video: reemplaza el ID de YouTube si cambia.
+  - Cumplimiento: app de bienestar y entretenimiento; sin claims médicos.
+-->
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PulseWaves crea una experiencia musical generativa en tiempo real, privada y diseñada para acompañarte.">
-  <meta name="theme-color" content="#0b1020">
-  <title>PulseWaves — Música generativa en tiempo real</title>
-  <link rel="stylesheet" href="./styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulseWaves — Música que late contigo</title>
+<meta name="description" content="Música binaural que se adapta a tu ritmo cardíaco en tiempo real. Concentración, sueño, meditación y relajación. Gratis en Google Play.">
+<meta property="og:title" content="PulseWaves — Música que late contigo">
+<meta property="og:description" content="Música binaural que se adapta a tu ritmo cardíaco, en vivo. Gratis en Google Play.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://wparrado.github.io/pulsewaves-site/assets/feature.png">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root{--bg:#0b0d17;--card:#151828;--fg:#eef0f7;--mut:#9aa0b4;--accent:#ff4d6d;--accent2:#6c8cff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{text-align:center;padding:72px 20px 40px}
+  h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;letter-spacing:-.02em}
+  h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--mut);font-size:clamp(1.05rem,2.5vw,1.3rem);max-width:620px;margin:18px auto 28px}
+  .cta{display:inline-flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .badge{display:inline-block;background:#fff;color:#000;font-weight:700;padding:14px 22px;border-radius:12px;text-decoration:none}
+  .ghost{color:var(--fg);text-decoration:none;border:1px solid #2a2f45;padding:13px 20px;border-radius:12px}
+  section{padding:48px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid #20243a;border-radius:16px;padding:22px}
+  .card h3{font-size:1.1rem;margin-bottom:6px}
+  .card p{color:var(--mut);font-size:.96rem}
+  .shots{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}
+  .shots img{height:420px;border-radius:18px;border:1px solid #20243a;flex:0 0 auto}
+  .video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid #20243a}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .price{font-size:1.6rem;font-weight:800;margin:6px 0}
+  .mut{color:var(--mut)}
+  form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  input[type=email]{flex:1;min-width:220px;max-width:340px;padding:14px;border-radius:12px;border:1px solid #2a2f45;background:#0e1120;color:#fff}
+  button{padding:14px 22px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+  footer{padding:48px 20px;text-align:center;color:var(--mut);font-size:.9rem;border-top:1px solid #20243a;margin-top:40px}
+  h2{font-size:clamp(1.5rem,4vw,2.1rem);margin-bottom:8px;text-align:center}
+  .lead{text-align:center;color:var(--mut);max-width:640px;margin:0 auto 26px}
+</style>
 </head>
 <body>
-  <div class="bg-orb orb-a"></div>
-  <div class="bg-orb orb-b"></div>
+<header>
+  <div class="wrap">
+    <h1>Tu música debería <span>latir contigo</span></h1>
+    <p class="sub">PulseWaves lee tu frecuencia cardíaca desde tu wearable y genera música binaural en tiempo real — latido a latido. No es una playlist: cada nota suena en vivo.</p>
+    <div class="cta">
+      <a class="badge" href="https://play.google.com/store/apps/details?id=co.nativepulse.pulsewaves">▶ Gratis en Google Play</a>
+      <a class="ghost" href="#como">Cómo funciona</a>
+    </div>
+    <p class="mut" style="margin-top:14px;font-size:.85rem">App de bienestar y entretenimiento. No es un producto médico.</p>
+  </div>
+</header>
 
-  <header class="hero">
-    <nav class="topbar" aria-label="Principal">
-      <a class="brand" href="#inicio">
-        <span class="brand-mark">
-          <img src="./assets/pulsewaves-logo.png" alt="PulseWaves" />
-        </span>
-        <span>
-          <strong>PulseWaves</strong>
-          <small>Música generativa</small>
-        </span>
-      </a>
-      <div class="topbar-links">
-        <a href="#funciones">Funciones</a>
-        <a href="#privacidad">Privacidad</a>
-        <a href="#planes">Planes</a>
-      </div>
-    </nav>
+<section id="como"><div class="wrap">
+  <h2>Cómo funciona</h2>
+  <p class="lead">Conecta tu reloj o pulsera (Health Connect, Samsung/Huawei Health o cualquier pulsómetro Bluetooth) y la música se mueve con tu pulso.</p>
+  <div class="grid">
+    <div class="card"><h3>🫀 Adaptativa</h3><p>La música cambia con tu ritmo cardíaco en tiempo real.</p></div>
+    <div class="card"><h3>🎧 Binaural</h3><p>Audio binaural generado en vivo, no loops pregrabados.</p></div>
+    <div class="card"><h3>🍅 Pomodoro integrado</h3><p>Gestiona solo tus ciclos de foco y descanso — sin tocar nada.</p></div>
+    <div class="card"><h3>🎹 10 instrumentos</h3><p>Pad, Kalimba, Rhodes, Piano de Cola, Cuenco Tibetano y más.</p></div>
+    <div class="card"><h3>🌈 4 visualizadores</h3><p>Tu latido convertido en geometría que respira y pulsa.</p></div>
+    <div class="card"><h3>🌙 Modos</h3><p>Concentración, Relajación, Sueño, Siesta Rápida y AutoBiosónico.</p></div>
+  </div>
+</div></section>
 
-    <section class="hero-grid" id="inicio">
-      <div class="hero-copy">
-        <div class="eyebrow">Experiencia musical personal</div>
-        <h1>Tu música, viva y en movimiento.</h1>
-        <p class="lead">
-          PulseWaves crea una banda sonora que evoluciona contigo, con una experiencia fluida,
-          privada y pensada para sentirse cercana desde el primer momento.
-        </p>
+<section><div class="wrap">
+  <h2>Míralo en acción</h2>
+  <div class="video"><iframe src="https://www.youtube.com/embed/voQB8b-Nbaw" title="PulseWaves" allowfullscreen loading="lazy"></iframe></div>
+</div></section>
 
-        <div class="cta-row">
-          <a class="btn primary" href="#funciones">Ver funciones</a>
-          <a class="btn secondary" href="#privacidad">Conocer privacidad</a>
-        </div>
+<section><div class="wrap">
+  <h2>Capturas</h2>
+  <div class="shots">
+    <img src="assets/shot1.png" alt="PulseWaves — visualizador en vivo" onerror="this.style.display='none'">
+    <img src="assets/shot2.png" alt="PulseWaves — modos de música" onerror="this.style.display='none'">
+    <img src="assets/shot3.png" alt="PulseWaves — Pomodoro" onerror="this.style.display='none'">
+    <img src="assets/shot4.png" alt="PulseWaves — instrumentos" onerror="this.style.display='none'">
+  </div>
+</div></section>
 
-        <ul class="hero-points" aria-label="Ventajas principales">
-          <li>Música generativa en tiempo real</li>
-          <li>Exportación local</li>
-          <li>Experiencia privada</li>
-        </ul>
-      </div>
+<section><div class="wrap">
+  <h2>Planes</h2>
+  <div class="plans">
+    <div class="card"><h3>Gratis</h3><div class="price">$0</div><p class="mut">Concentración + Relajación · 4 instrumentos · visualizador biosónico · sesiones de 25 min.</p></div>
+    <div class="card"><h3>Pro</h3><div class="price">$1.99<span class="mut" style="font-size:1rem">/mes</span></div><p class="mut">Todo lo de Gratis + Sueño y Siesta Rápida · 7 instrumentos · sin límite de sesión.</p></div>
+    <div class="card"><h3>Premium+</h3><div class="price">$4.99<span class="mut" style="font-size:1rem">/mes</span></div><p class="mut">Todo lo de Pro + AutoBiosónico · los 10 instrumentos · conexión Bluetooth directa. 3 días gratis.</p></div>
+  </div>
+</div></section>
 
-      <div class="hero-visual" aria-label="Vista de producto">
-        <div class="device-card">
-          <div class="device-header">
-            <span class="status-dot"></span>
-            <span>Sesión activa</span>
-          </div>
-          <div class="waveform" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="metrics">
-            <article>
-              <strong>Tiempo real</strong>
-              <span>respuesta viva</span>
-            </article>
-            <article>
-              <strong>Local</strong>
-              <span>sin depender de terceros</span>
-            </article>
-            <article>
-              <strong>Flexible</strong>
-              <span>planes para cada etapa</span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-  </header>
+<section><div class="wrap" style="text-align:center">
+  <h2>Empieza gratis</h2>
+  <p class="lead">Concentración y relajación gratis. Sin tarjeta de crédito.</p>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=co.nativepulse.pulsewaves">▶ Descargar en Google Play</a>
+</div></section>
 
-  <main>
-    <section class="section" id="funciones">
-      <div class="section-heading">
-        <span>Funciones clave</span>
-        <h2>Una experiencia musical creada para fluir contigo.</h2>
-      </div>
-
-      <div class="feature-grid">
-        <article class="card">
-          <h3>Música que evoluciona</h3>
-          <p>La sesión cambia en tiempo real para mantener una sensación fresca, dinámica y nunca repetitiva.</p>
-        </article>
-        <article class="card">
-          <h3>Exportación local</h3>
-          <p>Guarda tus sesiones en tu dispositivo para volver a escucharlas cuando quieras.</p>
-        </article>
-        <article class="card">
-          <h3>Experiencia estable</h3>
-          <p>Diseñada para acompañarte con una reproducción continua y una interfaz clara.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section split">
-      <div class="panel" id="privacidad">
-        <div class="section-heading">
-          <span>Privacidad</span>
-          <h2>Una propuesta pensada para sentirse cercana y discreta.</h2>
-        </div>
-        <p>
-          PulseWaves prioriza una experiencia personal: tu contenido permanece contigo y la app
-          evita añadir fricción innecesaria a tu sesión.
-        </p>
-      </div>
-
-      <div class="panel" id="planes">
-        <div class="section-heading">
-          <span>Planes</span>
-          <h2>Solo Free y Pro, con precio mensual claro.</h2>
-        </div>
-        <div class="pricing-grid">
-          <article class="plan-card">
-            <div class="plan-head">
-              <h3>Free</h3>
-              <p class="plan-price">Gratis</p>
-            </div>
-            <ul class="plan-features">
-              <li>Acceso a Focus y Relax</li>
-              <li>Reproducción continua</li>
-              <li>Hasta 6 skips por hora</li>
-            </ul>
-          </article>
-          <article class="plan-card featured">
-            <div class="plan-head">
-              <h3>Pro</h3>
-              <p class="plan-price">$1.99 / mes</p>
-            </div>
-            <ul class="plan-features">
-              <li>Incluye todo lo de Free</li>
-              <li>Acceso a Sleep y Power Nap</li>
-              <li>Exportación WAV local</li>
-              <li>Skips ilimitados</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="feature-grid">
-        <article class="card">
-          <h3>Siempre disponible</h3>
-          <p>Una experiencia pensada para integrarse de forma natural en tu rutina diaria.</p>
-        </article>
-        <article class="card">
-          <h3>Diseño envolvente</h3>
-          <p>Una presencia visual elegante, suave y enfocada en la música.</p>
-        </article>
-        <article class="card">
-          <h3>Versión inicial enfocada</h3>
-          <p>La primera entrega prioriza la experiencia principal y una base sólida para crecer.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>© <span id="year"></span> PulseWaves. Música generativa para tu día.</p>
-  </footer>
-
-  <script src="./script.js"></script>
+<footer>
+  <p>© PulseWaves · <a href="privacy-policy.html" style="color:var(--accent2)">Política de privacidad</a></p>
+  <p style="margin-top:8px">PulseWaves es una app de bienestar y entretenimiento. No es un producto médico y no diagnostica, trata ni cura ninguna condición.</p>
+</footer>
 </body>
 </html>
