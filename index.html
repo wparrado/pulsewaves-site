@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <!--
-  Landing de lanzamiento para wparrado.github.io/pulsewaves-site
-  - Autocontenida (un archivo). Sustituye los [PLACEHOLDER]:
-    · Capturas: pon 3-4 PNG/JPG (las mismas de Play) en /assets y ajusta los <img>.
-    · Email capture: cambia el action del <form> por tu Formspree/Mailchimp/Beehiiv.
-    · Video: reemplaza el ID de YouTube si cambia.
+  Landing de PulseWaves — wparrado.github.io/pulsewaves-site
+  - Autocontenida (un archivo) con i18n cliente (8 idiomas) + badge oficial de Google Play por idioma.
+  - Idioma: ?lang=xx en la URL > localStorage > navigator.language > es.
   - Cumplimiento: app de bienestar y entretenimiento; sin claims médicos.
 -->
 <html lang="es">
@@ -18,17 +16,28 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://wparrado.github.io/pulsewaves-site/assets/feature.png">
 <link rel="icon" href="assets/icon.png">
+<link rel="alternate" hreflang="es" href="https://wparrado.github.io/pulsewaves-site/?lang=es">
+<link rel="alternate" hreflang="en" href="https://wparrado.github.io/pulsewaves-site/?lang=en">
+<link rel="alternate" hreflang="fr" href="https://wparrado.github.io/pulsewaves-site/?lang=fr">
+<link rel="alternate" hreflang="pt" href="https://wparrado.github.io/pulsewaves-site/?lang=pt">
+<link rel="alternate" hreflang="it" href="https://wparrado.github.io/pulsewaves-site/?lang=it">
+<link rel="alternate" hreflang="de" href="https://wparrado.github.io/pulsewaves-site/?lang=de">
+<link rel="alternate" hreflang="ja" href="https://wparrado.github.io/pulsewaves-site/?lang=ja">
+<link rel="alternate" hreflang="ko" href="https://wparrado.github.io/pulsewaves-site/?lang=ko">
+<link rel="alternate" hreflang="x-default" href="https://wparrado.github.io/pulsewaves-site/">
 <style>
   :root{--bg:#0b0d17;--card:#151828;--fg:#eef0f7;--mut:#9aa0b4;--accent:#ff4d6d;--accent2:#6c8cff}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
   .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-  header{text-align:center;padding:72px 20px 40px}
+  .topbar{display:flex;justify-content:flex-end;padding:14px 20px 0}
+  .langsel{background:#0e1120;color:var(--fg);border:1px solid #2a2f45;border-radius:10px;padding:8px 12px;font-size:.9rem}
+  header{text-align:center;padding:32px 20px 40px}
   h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;letter-spacing:-.02em}
   h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{color:var(--mut);font-size:clamp(1.05rem,2.5vw,1.3rem);max-width:620px;margin:18px auto 28px}
   .cta{display:inline-flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
-  .badge{display:inline-block;background:#fff;color:#000;font-weight:700;padding:14px 22px;border-radius:12px;text-decoration:none}
+  .play-badge{height:60px;display:inline-block}
   .ghost{color:var(--fg);text-decoration:none;border:1px solid #2a2f45;padding:13px 20px;border-radius:12px}
   section{padding:48px 0}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
@@ -42,73 +51,123 @@
   .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
   .price{font-size:1.6rem;font-weight:800;margin:6px 0}
   .mut{color:var(--mut)}
-  form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
-  input[type=email]{flex:1;min-width:220px;max-width:340px;padding:14px;border-radius:12px;border:1px solid #2a2f45;background:#0e1120;color:#fff}
-  button{padding:14px 22px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
   footer{padding:48px 20px;text-align:center;color:var(--mut);font-size:.9rem;border-top:1px solid #20243a;margin-top:40px}
   h2{font-size:clamp(1.5rem,4vw,2.1rem);margin-bottom:8px;text-align:center}
   .lead{text-align:center;color:var(--mut);max-width:640px;margin:0 auto 26px}
 </style>
 </head>
 <body>
+<div class="topbar">
+  <select id="lang" class="langsel" aria-label="Language">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="pt">Português</option>
+    <option value="it">Italiano</option>
+    <option value="de">Deutsch</option>
+    <option value="ja">日本語</option>
+    <option value="ko">한국어</option>
+  </select>
+</div>
+
 <header>
   <div class="wrap">
-    <h1>Tu música debería <span>latir contigo</span></h1>
-    <p class="sub">PulseWaves lee tu frecuencia cardíaca desde tu wearable y genera música binaural en tiempo real — latido a latido. No es una playlist: cada nota suena en vivo.</p>
+    <h1><span data-i18n="h1a"></span> <span data-i18n="h1b"></span></h1>
+    <p class="sub" data-i18n="sub"></p>
     <div class="cta">
-      <a class="badge" href="https://play.google.com/store/apps/details?id=co.nativepulse.pulsewaves">▶ Gratis en Google Play</a>
-      <a class="ghost" href="#como">Cómo funciona</a>
+      <a class="play-link" href="https://play.google.com/store/apps/details?id=co.nativepulse.pulsewaves">
+        <img class="play-badge" src="assets/badges/es.png" alt="Google Play">
+      </a>
+      <a class="ghost" href="#como" data-i18n="nav_how"></a>
     </div>
-    <p class="mut" style="margin-top:14px;font-size:.85rem">App de bienestar y entretenimiento. No es un producto médico.</p>
+    <p class="mut" style="margin-top:14px;font-size:.85rem" data-i18n="disclaimer"></p>
   </div>
 </header>
 
 <section id="como"><div class="wrap">
-  <h2>Cómo funciona</h2>
-  <p class="lead">Conecta tu reloj o pulsera (Health Connect, Samsung/Huawei Health o cualquier pulsómetro Bluetooth) y la música se mueve con tu pulso.</p>
+  <h2 data-i18n="how_title"></h2>
+  <p class="lead" data-i18n="how_lead"></p>
   <div class="grid">
-    <div class="card"><h3>🫀 Adaptativa</h3><p>La música cambia con tu ritmo cardíaco en tiempo real.</p></div>
-    <div class="card"><h3>🎧 Binaural</h3><p>Audio binaural generado en vivo, no loops pregrabados.</p></div>
-    <div class="card"><h3>🍅 Pomodoro integrado</h3><p>Gestiona solo tus ciclos de foco y descanso — sin tocar nada.</p></div>
-    <div class="card"><h3>🎹 10 instrumentos</h3><p>Pad, Kalimba, Rhodes, Piano de Cola, Cuenco Tibetano y más.</p></div>
-    <div class="card"><h3>🌈 4 visualizadores</h3><p>Tu latido convertido en geometría que respira y pulsa.</p></div>
-    <div class="card"><h3>🌙 Modos</h3><p>Concentración, Relajación, Sueño, Siesta Rápida y AutoBiosónico.</p></div>
+    <div class="card"><h3 data-i18n="c1t"></h3><p data-i18n="c1d"></p></div>
+    <div class="card"><h3 data-i18n="c2t"></h3><p data-i18n="c2d"></p></div>
+    <div class="card"><h3 data-i18n="c3t"></h3><p data-i18n="c3d"></p></div>
+    <div class="card"><h3 data-i18n="c4t"></h3><p data-i18n="c4d"></p></div>
+    <div class="card"><h3 data-i18n="c5t"></h3><p data-i18n="c5d"></p></div>
+    <div class="card"><h3 data-i18n="c6t"></h3><p data-i18n="c6d"></p></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
-  <h2>Míralo en acción</h2>
+  <h2 data-i18n="video_title"></h2>
   <div class="video"><iframe src="https://www.youtube.com/embed/voQB8b-Nbaw" title="PulseWaves" allowfullscreen loading="lazy"></iframe></div>
 </div></section>
 
 <section><div class="wrap">
-  <h2>Capturas</h2>
+  <h2 data-i18n="shots_title"></h2>
   <div class="shots">
-    <img src="assets/shot1.png" alt="PulseWaves — visualizador en vivo" onerror="this.style.display='none'">
-    <img src="assets/shot2.png" alt="PulseWaves — modos de música" onerror="this.style.display='none'">
-    <img src="assets/shot3.png" alt="PulseWaves — Pomodoro" onerror="this.style.display='none'">
-    <img src="assets/shot4.png" alt="PulseWaves — instrumentos" onerror="this.style.display='none'">
+    <img src="assets/shot1.png" alt="PulseWaves" onerror="this.style.display='none'">
+    <img src="assets/shot2.png" alt="PulseWaves" onerror="this.style.display='none'">
+    <img src="assets/shot3.png" alt="PulseWaves" onerror="this.style.display='none'">
+    <img src="assets/shot4.png" alt="PulseWaves" onerror="this.style.display='none'">
   </div>
 </div></section>
 
 <section><div class="wrap">
-  <h2>Planes</h2>
+  <h2 data-i18n="plans_title"></h2>
   <div class="plans">
-    <div class="card"><h3>Gratis</h3><div class="price">$0</div><p class="mut">Concentración + Relajación · 4 instrumentos · visualizador biosónico · sesiones de 25 min.</p></div>
-    <div class="card"><h3>Pro</h3><div class="price">$1.99<span class="mut" style="font-size:1rem">/mes</span></div><p class="mut">Todo lo de Gratis + Sueño y Siesta Rápida · 7 instrumentos · sin límite de sesión.</p></div>
-    <div class="card"><h3>Premium+</h3><div class="price">$4.99<span class="mut" style="font-size:1rem">/mes</span></div><p class="mut">Todo lo de Pro + AutoBiosónico · los 10 instrumentos · conexión Bluetooth directa. 3 días gratis.</p></div>
+    <div class="card"><h3 data-i18n="plan_free"></h3><div class="price">$0</div><p class="mut" data-i18n="plan_free_d"></p></div>
+    <div class="card"><h3 data-i18n="plan_pro"></h3><div class="price">$1.99<span class="mut" style="font-size:1rem" data-i18n="per_mo"></span></div><p class="mut" data-i18n="plan_pro_d"></p></div>
+    <div class="card"><h3 data-i18n="plan_prem"></h3><div class="price">$4.99<span class="mut" style="font-size:1rem" data-i18n="per_mo"></span></div><p class="mut" data-i18n="plan_prem_d"></p></div>
   </div>
 </div></section>
 
 <section><div class="wrap" style="text-align:center">
-  <h2>Empieza gratis</h2>
-  <p class="lead">Concentración y relajación gratis. Sin tarjeta de crédito.</p>
-  <a class="badge" href="https://play.google.com/store/apps/details?id=co.nativepulse.pulsewaves">▶ Descargar en Google Play</a>
+  <h2 data-i18n="cta2_title"></h2>
+  <p class="lead" data-i18n="cta2_lead"></p>
+  <a class="play-link" href="https://play.google.com/store/apps/details?id=co.nativepulse.pulsewaves">
+    <img class="play-badge" src="assets/badges/es.png" alt="Google Play">
+  </a>
 </div></section>
 
 <footer>
-  <p>© PulseWaves · <a href="privacy-policy.html" style="color:var(--accent2)">Política de privacidad</a></p>
-  <p style="margin-top:8px">PulseWaves es una app de bienestar y entretenimiento. No es un producto médico y no diagnostica, trata ni cura ninguna condición.</p>
+  <p>© PulseWaves · <a href="privacy-policy.html" style="color:var(--accent2)" data-i18n="privacy"></a></p>
+  <p style="margin-top:8px" data-i18n="foot_disc"></p>
 </footer>
+
+<script>
+const I18N = {
+  es:{title:"PulseWaves — Música que late contigo",h1a:"Tu música debería",h1b:"latir contigo",sub:"PulseWaves lee tu frecuencia cardíaca desde tu wearable y genera música binaural en tiempo real — latido a latido. No es una playlist: cada nota suena en vivo.",nav_how:"Cómo funciona",disclaimer:"App de bienestar y entretenimiento. No es un producto médico.",how_title:"Cómo funciona",how_lead:"Conecta tu reloj o pulsera (Health Connect, Samsung/Huawei Health o cualquier pulsómetro Bluetooth) y la música se mueve con tu pulso.",c1t:"🫀 Adaptativa",c1d:"La música cambia con tu ritmo cardíaco en tiempo real.",c2t:"🎧 Binaural",c2d:"Audio binaural generado en vivo, no loops pregrabados.",c3t:"🍅 Pomodoro integrado",c3d:"Gestiona solo tus ciclos de foco y descanso — sin tocar nada.",c4t:"🎹 10 instrumentos",c4d:"Pad, Kalimba, Rhodes, Piano de Cola, Cuenco Tibetano y más.",c5t:"🌈 4 visualizadores",c5d:"Tu latido convertido en geometría que respira y pulsa.",c6t:"🌙 Modos",c6d:"Concentración, Relajación, Sueño, Siesta Rápida y AutoBiosónico.",video_title:"Míralo en acción",shots_title:"Capturas",plans_title:"Planes",plan_free:"Gratis",plan_free_d:"Concentración + Relajación · 4 instrumentos · visualizador biosónico · sesiones de 25 min.",plan_pro:"Pro",plan_pro_d:"Todo lo de Gratis + Sueño y Siesta Rápida · 7 instrumentos · sin límite de sesión.",plan_prem:"Premium+",plan_prem_d:"Todo lo de Pro + AutoBiosónico · los 10 instrumentos · conexión Bluetooth directa. 3 días gratis.",per_mo:"/mes",cta2_title:"Empieza gratis",cta2_lead:"Concentración y relajación gratis. Sin tarjeta de crédito.",privacy:"Política de privacidad",foot_disc:"PulseWaves es una app de bienestar y entretenimiento. No es un producto médico y no diagnostica, trata ni cura ninguna condición."},
+  en:{title:"PulseWaves — Music that beats with you",h1a:"Your music should",h1b:"beat with you",sub:"PulseWaves reads your heart rate from your wearable and generates binaural music in real time — beat by beat. Not a playlist: every note plays live.",nav_how:"How it works",disclaimer:"A wellness and entertainment app. Not a medical product.",how_title:"How it works",how_lead:"Connect your watch or band (Health Connect, Samsung/Huawei Health or any Bluetooth heart-rate monitor) and the music moves with your pulse.",c1t:"🫀 Adaptive",c1d:"The music changes with your heart rate in real time.",c2t:"🎧 Binaural",c2d:"Binaural audio generated live, not pre-recorded loops.",c3t:"🍅 Built-in Pomodoro",c3d:"It manages your focus and break cycles on its own — hands-free.",c4t:"🎹 10 instruments",c4d:"Pad, Kalimba, Rhodes, Grand Piano, Tibetan Bowl and more.",c5t:"🌈 4 visualizers",c5d:"Your heartbeat turned into geometry that breathes and pulses.",c6t:"🌙 Modes",c6d:"Focus, Relax, Sleep, Power Nap and AutoBiosonic.",video_title:"See it in action",shots_title:"Screenshots",plans_title:"Plans",plan_free:"Free",plan_free_d:"Focus + Relax · 4 instruments · biosonic visualizer · 25-min sessions.",plan_pro:"Pro",plan_pro_d:"Everything in Free + Sleep and Power Nap · 7 instruments · no session limit.",plan_prem:"Premium+",plan_prem_d:"Everything in Pro + AutoBiosonic · all 10 instruments · direct Bluetooth connection. 3-day free trial.",per_mo:"/mo",cta2_title:"Start free",cta2_lead:"Focus and relax for free. No credit card.",privacy:"Privacy Policy",foot_disc:"PulseWaves is a wellness and entertainment app. It is not a medical product and does not diagnose, treat or cure any condition."},
+  fr:{title:"PulseWaves — La musique qui bat avec toi",h1a:"Ta musique devrait",h1b:"battre avec toi",sub:"PulseWaves lit ta fréquence cardiaque depuis ton wearable et génère une musique binaurale en temps réel — battement après battement. Pas une playlist : chaque note est jouée en direct.",nav_how:"Comment ça marche",disclaimer:"Application de bien-être et de divertissement. Ce n'est pas un produit médical.",how_title:"Comment ça marche",how_lead:"Connecte ta montre ou ton bracelet (Health Connect, Samsung/Huawei Health ou tout cardiofréquencemètre Bluetooth) et la musique suit ton pouls.",c1t:"🫀 Adaptative",c1d:"La musique change avec ta fréquence cardiaque en temps réel.",c2t:"🎧 Binaurale",c2d:"Audio binaural généré en direct, pas des boucles préenregistrées.",c3t:"🍅 Pomodoro intégré",c3d:"Il gère seul tes cycles de concentration et de pause — sans rien toucher.",c4t:"🎹 10 instruments",c4d:"Pad, Kalimba, Rhodes, Piano à queue, Bol tibétain et plus.",c5t:"🌈 4 visualiseurs",c5d:"Ton battement transformé en géométrie qui respire et pulse.",c6t:"🌙 Modes",c6d:"Concentration, Détente, Sommeil, Sieste et AutoBiosonic.",video_title:"Voir en action",shots_title:"Captures",plans_title:"Forfaits",plan_free:"Gratuit",plan_free_d:"Concentration + Détente · 4 instruments · visualiseur biosonique · sessions de 25 min.",plan_pro:"Pro",plan_pro_d:"Tout le gratuit + Sommeil et Sieste · 7 instruments · sans limite de session.",plan_prem:"Premium+",plan_prem_d:"Tout le Pro + AutoBiosonic · les 10 instruments · connexion Bluetooth directe. 3 jours gratuits.",per_mo:"/mois",cta2_title:"Commence gratuitement",cta2_lead:"Concentration et détente gratuites. Sans carte bancaire.",privacy:"Politique de confidentialité",foot_disc:"PulseWaves est une application de bien-être et de divertissement. Ce n'est pas un produit médical et elle ne diagnostique, ne traite ni ne guérit aucune affection."},
+  pt:{title:"PulseWaves — Música que pulsa com você",h1a:"Sua música deveria",h1b:"pulsar com você",sub:"O PulseWaves lê sua frequência cardíaca pelo wearable e gera música binaural em tempo real — batida a batida. Não é uma playlist: cada nota toca ao vivo.",nav_how:"Como funciona",disclaimer:"App de bem-estar e entretenimento. Não é um produto médico.",how_title:"Como funciona",how_lead:"Conecte seu relógio ou pulseira (Health Connect, Samsung/Huawei Health ou qualquer monitor cardíaco Bluetooth) e a música acompanha seu pulso.",c1t:"🫀 Adaptativa",c1d:"A música muda com sua frequência cardíaca em tempo real.",c2t:"🎧 Binaural",c2d:"Áudio binaural gerado ao vivo, não loops pré-gravados.",c3t:"🍅 Pomodoro integrado",c3d:"Gerencia sozinho seus ciclos de foco e descanso — sem tocar em nada.",c4t:"🎹 10 instrumentos",c4d:"Pad, Kalimba, Rhodes, Piano de Cauda, Tigela Tibetana e mais.",c5t:"🌈 4 visualizadores",c5d:"Sua batida transformada em geometria que respira e pulsa.",c6t:"🌙 Modos",c6d:"Concentração, Relaxar, Sono, Soneca Rápida e AutoBiosonic.",video_title:"Veja em ação",shots_title:"Capturas",plans_title:"Planos",plan_free:"Grátis",plan_free_d:"Concentração + Relaxar · 4 instrumentos · visualizador biossônico · sessões de 25 min.",plan_pro:"Pro",plan_pro_d:"Tudo do Grátis + Sono e Soneca · 7 instrumentos · sem limite de sessão.",plan_prem:"Premium+",plan_prem_d:"Tudo do Pro + AutoBiosonic · os 10 instrumentos · conexão Bluetooth direta. 3 dias grátis.",per_mo:"/mês",cta2_title:"Comece grátis",cta2_lead:"Concentração e relaxamento grátis. Sem cartão de crédito.",privacy:"Política de privacidade",foot_disc:"O PulseWaves é um app de bem-estar e entretenimento. Não é um produto médico e não diagnostica, trata nem cura nenhuma condição."},
+  it:{title:"PulseWaves — La musica che batte con te",h1a:"La tua musica dovrebbe",h1b:"battere con te",sub:"PulseWaves legge la tua frequenza cardiaca dal wearable e genera musica binaurale in tempo reale — battito dopo battito. Non è una playlist: ogni nota suona dal vivo.",nav_how:"Come funziona",disclaimer:"App di benessere e intrattenimento. Non è un prodotto medico.",how_title:"Come funziona",how_lead:"Collega l'orologio o il braccialetto (Health Connect, Samsung/Huawei Health o qualsiasi cardiofrequenzimetro Bluetooth) e la musica segue il tuo battito.",c1t:"🫀 Adattiva",c1d:"La musica cambia con la tua frequenza cardiaca in tempo reale.",c2t:"🎧 Binaurale",c2d:"Audio binaurale generato dal vivo, non loop preregistrati.",c3t:"🍅 Pomodoro integrato",c3d:"Gestisce da solo i cicli di concentrazione e pausa — a mani libere.",c4t:"🎹 10 strumenti",c4d:"Pad, Kalimba, Rhodes, Pianoforte a coda, Campana tibetana e altro.",c5t:"🌈 4 visualizzatori",c5d:"Il tuo battito trasformato in geometria che respira e pulsa.",c6t:"🌙 Modalità",c6d:"Concentrazione, Relax, Sonno, Pisolino e AutoBiosonic.",video_title:"Guardalo in azione",shots_title:"Schermate",plans_title:"Piani",plan_free:"Gratis",plan_free_d:"Concentrazione + Relax · 4 strumenti · visualizzatore biosonico · sessioni di 25 min.",plan_pro:"Pro",plan_pro_d:"Tutto di Gratis + Sonno e Pisolino · 7 strumenti · senza limiti di sessione.",plan_prem:"Premium+",plan_prem_d:"Tutto di Pro + AutoBiosonic · tutti i 10 strumenti · connessione Bluetooth diretta. 3 giorni gratis.",per_mo:"/mese",cta2_title:"Inizia gratis",cta2_lead:"Concentrazione e relax gratis. Senza carta di credito.",privacy:"Informativa sulla privacy",foot_disc:"PulseWaves è un'app di benessere e intrattenimento. Non è un prodotto medico e non diagnostica, cura né tratta alcuna condizione."},
+  de:{title:"PulseWaves — Musik, die mit dir schlägt",h1a:"Deine Musik sollte",h1b:"mit dir schlagen",sub:"PulseWaves liest deine Herzfrequenz von deinem Wearable und erzeugt binaurale Musik in Echtzeit — Schlag für Schlag. Keine Playlist: jede Note erklingt live.",nav_how:"So funktioniert's",disclaimer:"Eine Wellness- und Unterhaltungs-App. Kein Medizinprodukt.",how_title:"So funktioniert's",how_lead:"Verbinde deine Uhr oder dein Band (Health Connect, Samsung/Huawei Health oder einen beliebigen Bluetooth-Pulsmesser) und die Musik folgt deinem Puls.",c1t:"🫀 Adaptiv",c1d:"Die Musik ändert sich in Echtzeit mit deiner Herzfrequenz.",c2t:"🎧 Binaural",c2d:"Binaurales Audio, live erzeugt — keine vorgefertigten Loops.",c3t:"🍅 Integriertes Pomodoro",c3d:"Steuert deine Fokus- und Pausenzyklen von selbst — ohne Eingreifen.",c4t:"🎹 10 Instrumente",c4d:"Pad, Kalimba, Rhodes, Flügel, Klangschale und mehr.",c5t:"🌈 4 Visualizer",c5d:"Dein Herzschlag als Geometrie, die atmet und pulsiert.",c6t:"🌙 Modi",c6d:"Fokus, Entspannung, Schlaf, Power-Nap und AutoBiosonic.",video_title:"In Aktion ansehen",shots_title:"Screenshots",plans_title:"Tarife",plan_free:"Kostenlos",plan_free_d:"Fokus + Entspannung · 4 Instrumente · Biosonic-Visualizer · 25-Min.-Sessions.",plan_pro:"Pro",plan_pro_d:"Alles aus Kostenlos + Schlaf und Power-Nap · 7 Instrumente · ohne Session-Limit.",plan_prem:"Premium+",plan_prem_d:"Alles aus Pro + AutoBiosonic · alle 10 Instrumente · direkte Bluetooth-Verbindung. 3 Tage gratis.",per_mo:"/Mon.",cta2_title:"Kostenlos starten",cta2_lead:"Fokus und Entspannung gratis. Ohne Kreditkarte.",privacy:"Datenschutzerklärung",foot_disc:"PulseWaves ist eine Wellness- und Unterhaltungs-App. Es ist kein Medizinprodukt und diagnostiziert, behandelt oder heilt keine Erkrankungen."},
+  ja:{title:"PulseWaves — あなたと共に脈打つ音楽",h1a:"あなたの音楽は",h1b:"あなたと脈打つべき",sub:"PulseWaves はウェアラブルから心拍数を読み取り、リアルタイムでバイノーラル音楽を生成します — 一拍ごとに。プレイリストではなく、すべての音がライブで鳴ります。",nav_how:"仕組み",disclaimer:"ウェルネス＆エンターテインメントのアプリです。医療機器ではありません。",how_title:"仕組み",how_lead:"時計やバンド（Health Connect、Samsung/Huawei Health、または任意の Bluetooth 心拍計）を接続すると、音楽があなたの脈に合わせて動きます。",c1t:"🫀 アダプティブ",c1d:"音楽がリアルタイムで心拍数に合わせて変化します。",c2t:"🎧 バイノーラル",c2d:"録音済みループではなく、ライブ生成のバイノーラル音声。",c3t:"🍅 ポモドーロ内蔵",c3d:"集中と休憩のサイクルを自動で管理 — 手間いらず。",c4t:"🎹 10 種の楽器",c4d:"パッド、カリンバ、ローズ、グランドピアノ、シンギングボウルなど。",c5t:"🌈 4 つのビジュアライザー",c5d:"あなたの鼓動が、呼吸し脈打つ幾何学に。",c6t:"🌙 モード",c6d:"集中、リラックス、睡眠、パワーナップ、AutoBiosonic。",video_title:"動作を見る",shots_title:"スクリーンショット",plans_title:"プラン",plan_free:"無料",plan_free_d:"集中＋リラックス · 楽器4種 · バイオソニック・ビジュアライザー · 25分セッション。",plan_pro:"Pro",plan_pro_d:"無料の全機能＋睡眠とパワーナップ · 楽器7種 · セッション無制限。",plan_prem:"Premium+",plan_prem_d:"Pro の全機能＋AutoBiosonic · 楽器10種すべて · Bluetooth 直接接続。3日間無料。",per_mo:"/月",cta2_title:"無料で始める",cta2_lead:"集中とリラックスが無料。クレジットカード不要。",privacy:"プライバシーポリシー",foot_disc:"PulseWaves はウェルネス＆エンターテインメントのアプリです。医療機器ではなく、いかなる疾患の診断・治療・治癒も行いません。"},
+  ko:{title:"PulseWaves — 당신과 함께 뛰는 음악",h1a:"당신의 음악은",h1b:"당신과 함께 뛰어야 합니다",sub:"PulseWaves는 웨어러블에서 심박수를 읽어 실시간으로 바이노럴 음악을 생성합니다 — 박동마다. 재생목록이 아니라 모든 음이 실시간으로 연주됩니다.",nav_how:"작동 방식",disclaimer:"웰니스 및 엔터테인먼트 앱입니다. 의료 기기가 아닙니다.",how_title:"작동 방식",how_lead:"시계나 밴드(Health Connect, Samsung/Huawei Health 또는 모든 Bluetooth 심박계)를 연결하면 음악이 당신의 맥박에 맞춰 움직입니다.",c1t:"🫀 적응형",c1d:"음악이 실시간으로 당신의 심박수에 맞춰 바뀝니다.",c2t:"🎧 바이노럴",c2d:"미리 녹음된 루프가 아니라 실시간 생성되는 바이노럴 오디오.",c3t:"🍅 내장 뽀모도로",c3d:"집중과 휴식 주기를 스스로 관리 — 손댈 필요 없이.",c4t:"🎹 악기 10종",c4d:"패드, 칼림바, 로즈, 그랜드 피아노, 싱잉볼 등.",c5t:"🌈 비주얼라이저 4종",c5d:"당신의 박동이 숨 쉬고 고동치는 기하학으로.",c6t:"🌙 모드",c6d:"집중, 휴식, 수면, 파워냅, AutoBiosonic.",video_title:"실제로 보기",shots_title:"스크린샷",plans_title:"요금제",plan_free:"무료",plan_free_d:"집중 + 휴식 · 악기 4종 · 바이오소닉 비주얼라이저 · 25분 세션.",plan_pro:"Pro",plan_pro_d:"무료의 모든 기능 + 수면과 파워냅 · 악기 7종 · 세션 무제한.",plan_prem:"Premium+",plan_prem_d:"Pro의 모든 기능 + AutoBiosonic · 악기 10종 전체 · Bluetooth 직접 연결. 3일 무료.",per_mo:"/월",cta2_title:"무료로 시작",cta2_lead:"집중과 휴식을 무료로. 신용카드 불필요.",privacy:"개인정보 처리방침",foot_disc:"PulseWaves는 웰니스 및 엔터테인먼트 앱입니다. 의료 기기가 아니며 어떠한 질환도 진단·치료·완치하지 않습니다."}
+};
+const SUPPORTED = Object.keys(I18N);
+function pickLang(){
+  const q = new URLSearchParams(location.search).get('lang');
+  if (q && I18N[q]) return q;
+  const ls = localStorage.getItem('pw_lang');
+  if (ls && I18N[ls]) return ls;
+  const nav = (navigator.language||'es').slice(0,2).toLowerCase();
+  return I18N[nav] ? nav : 'es';
+}
+function applyLang(lang){
+  const t = I18N[lang] || I18N.es;
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if (t[k] != null) el.textContent = t[k];
+  });
+  document.querySelectorAll('.play-badge').forEach(img=>{ img.src = 'assets/badges/'+lang+'.png'; img.alt = t.cta2_title; });
+  const sel = document.getElementById('lang'); if (sel) sel.value = lang;
+  localStorage.setItem('pw_lang', lang);
+}
+document.getElementById('lang').addEventListener('change', e=>applyLang(e.target.value));
+applyLang(pickLang());
+</script>
 </body>
 </html>
